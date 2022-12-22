@@ -52,7 +52,7 @@ It is also used to treat adults with ADHD or narcolepsy (a sleep disorder).
 Methylphenidate is only available on prescription.
 It comes as standard (immediate release) tablets and capsules and slow release (also called extended, modified or prolonged release) tablets and capsules.”
 
-(https://www.nhs.uk/medicines/methylphenidate-children/#:~:text=Methylphenidate%20is%20used%20to%20treat,is%20only%20available%20on%20prescription.)
+@italic{Click @hyperlink["https://www.nhs.uk/medicines/methylphenidate-children/#:~:text=Methylphenidate%20is%20used%20to%20treat,is%20only%20available%20on%20prescription"]{here} for more details.}
 
 We all should care about mental health, and that leads us to the LBA model, the model will help us understand more about how this medication works in terms of response time and evidence accumulation.
 
@@ -107,24 +107,25 @@ Weigard, A., Heathcote, A. & Sripada, C. Modeling the effects of methylphenidate
 
 @(image "Methylphenidate.png")
 
-https://link.springer.com/article/10.1007/s00213-019-05316-x
+@hyperlink["https://link.springer.com/article/10.1007/s00213-019-05316-x"]{Modeling the effects of methylphenidate on interference and evidence accumulation processes using the conflict linear ballistic accumulator}
 
 @(image "ABM.png")
 
-https://doi.org/10.3389/fpsyg.2019.02447
+@hyperlink["https://doi.org/10.3389/fpsyg.2019.02447"]{Linear Ballistic Accumulator Modeling of Attentional Bias Modification Revealed Disturbed Evidence Accumulation of Negative Information by Explicit Instruction}
 
 @bold{Programming the LBA model with R and Matlab}
 
 @(image "R.png")
 
-https://search.r-project.org/CRAN/refmans/rtdists/html/LBA.html
+@hyperlink["https://search.r-project.org/CRAN/refmans/rtdists/html/LBA.html"]{The Linear Ballistic Accumulator (LBA) - R}
 
 @(image "Matlab.png")
 
-https://github.com/smfleming/LBA
+@hyperlink["https://github.com/smfleming/LBA"]{The Linear Ballistic Accumulator (LBA) - Matlab}
 
 @bold{methods for fitting the LBA model}
 
 @(image "Methods.png")
 
-https://link-springer-com.proxy.lib.uwaterloo.ca/content/pdf/10.3758/BRM.41.4.1095
+@hyperlink["https://link-springer-com.proxy.lib.uwaterloo.ca/content/pdf/10.3758/BRM.41.4.1095"]{Getting more from accuracy and response time data: Methods for fitting the linear ballistic accumulator}
+
