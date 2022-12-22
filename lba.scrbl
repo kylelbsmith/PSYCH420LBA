@@ -8,9 +8,11 @@
 
 @section{Introduction: What is LBA?}
 
+The LBA Model of decision-making represents n choices as a race between n accumulators.
+@image["LBAoverview.png"]
 
 @section{History of LBA}
-
+@image["LBAhistory.png"]
 
 @section{Building the LBA Model}
 
