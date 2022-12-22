@@ -15,6 +15,8 @@ The LBA Model of decision-making represents n choices as a race between n accumu
 @image["LBAhistory.png"]
 
 @section{Building the LBA Model}
+For a given number of choices, the LBA model is implemented by graphing a simple linear line y=mx+b on a 2D plane with the following:
+@image["Elementdetails.png"]
 
 
 @section{Pros and Cons of LBA}
@@ -39,6 +41,8 @@ Non-linear biases (if one source of evidence heavily introduced at beginning or 
 Cognitive Biases (Primacy & Recency Effect)
 
 @section{Applications of LBA}
+
+
 
 @bold{Why should we care about it?}
 
