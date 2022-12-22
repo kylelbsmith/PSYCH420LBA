@@ -1,7 +1,6 @@
 #lang racket
-
-(require (planet williams/science/random-distributions/gaussian))
-(require plot)
+(require "buildlba.rkt")
+(require "plotlba.rkt")
 
 ;; user defined variables
 
@@ -22,28 +21,11 @@
 ; check if s >= 0
 
 
-;; build accumulator
 
-(define (get-y-inter a)
-  (random 0 a))
-
-(define (get-slope mean sd)
-  (random-gaussian mean sd))
-
-(define (build-accumulators a sd vs ths)
-  (for/list ([mean vs]
-             [b ths])
-    (list (get-y-inter a) (get-slope mean sd) b)))
-
+;; Now that all variables have been checked, we are ready to run! We use the buildlba functions to build our accumulators:
 (define accs (build-accumulators A s means bs))
 
 ;; visualize accumulators
 
-(define (plot-a driftrate threshold start)
-  (plot (list (function (λ (x) (+ (* driftrate x) start)) 0 (/ threshold 8) #:label "accumulator")
-              (function (λ (x) threshold) #:label "threshold" #:color 0 #:style 'dot))
-        #:x-label "Decision Time" #:y-label "Evidence"))
-
-
-; for each set of accumulator data, create plot:
+; for each set of accumulator data, create plot using (plot-a driftrate threshold start):
   
