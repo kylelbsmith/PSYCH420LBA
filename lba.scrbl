@@ -24,6 +24,8 @@ Pros:
 1.Linear nature of LBA as a choice response time model allows for easily interpretable “analytic solutions for predicted distributions and probabilities” (Brown and Heathcote, 2007)
 2.Solutions using the LBA model can be used with any number of response choices (N = 1, 2, … , k)
 Cons:
+@image["recency-effect-primacy-effect.png"]
+
 1.Leaky Competitive Accumulator (Usher & McClelland), includes non-linear random variability to oscillate the start points (k) and drift rates (d) 
 
 These fluctuations mimic changes in Na+ / K+ membrane pot. and firing rates in BN
@@ -36,9 +38,10 @@ Authors argue all models have biological inaccuracies; should not cast away LBA 
 
 Random-dot kinematograms (moment-to-moment var.)
 
-Non-linear biases (if one source of evidence heavily introduced at beginning or end of sequence, responses will reflect these biases.
+Non-linear biases (if one source of evidence heavily introduced at beginning or end of sequence, responses will reflect these biases).
 
 Cognitive Biases (Primacy & Recency Effect)
+@image["recency-effect-primacy-effect.png"]
 
 @section{Applications of LBA}
 
