@@ -17,7 +17,7 @@ What should 'bs' = ")
 What should 'means' = ")
 (define means (read)) ; average means for each choice (length of means should be equal to n)
 
-(display "In this project, 'A' is defined as the maximum range of the starting 'k', or x-intercept (0 ≤ k ≤ A). 'A' should be less than the minimum decision threshold value defined in the list of 'bs'.
+(display "In this project, 'A' is defined as the maximum range of the starting 'k', or intercept (0 ≤ k ≤ A). 'A' should be less than the minimum decision threshold value defined in the list of 'bs'.
 What should 'A' = ")
 (define A (read)) ; max range of starting k (0 ≤ k ≤ A)
 
