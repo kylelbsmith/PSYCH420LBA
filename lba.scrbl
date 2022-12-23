@@ -260,13 +260,13 @@ Then, we will observe what happens to the RT when the model is run 10, 100, 1000
 @(image #:scale 0.5  "img/1000.png")
 @(image #:scale 0.5 "img/10000.png")
 
-@subsection{Interesting Observations}
+@subsection{Observations}
 As the number of runs increases, it becomes very clear that there is not one "common" RT that the model converges to.
 Rather, there are A number of RT values the model converges to. This makes sense: recall that A is the maximum possible
 k value (0 ≤ k ≤ A) where k is an integer that represents the y-intercept of our accumulator line. Depending on the
-value of k, the RT would be faster.
-Notice also that the density of each of the A lines visually seem quite even. This should also make sense, because
-k is uniformly distributed (i.e. each value between [0, A] has an equal chance of being k each run of the graph).
+value of k, the RT would be faster or slower. Notice also that the density of each of the A lines visually seem quite even when A = 5.
+This should also make sense, because k is uniformly distributed (i.e. each value between [0, A] has an equal chance of being k each
+run of the graph).
 
 @subsection{Code Overview}
 In-line documentation is provided in each file! Our demo is built on 4 key racket files:

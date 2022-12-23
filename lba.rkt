@@ -3,7 +3,7 @@
 
 ;; user defined variables - CHANGE ME if you'd like to test different variables
 (define n 2) ; number of choices (n ≥ 0) 
-(define bs '(15 10)) ; decision threshold - set one if common across all; else, list individual thresholds in same order as in means
+(define bs '(10 10)) ; decision threshold - set one if common across all; else, list individual thresholds in same order as in means
 (define A 5) ; max range of starting k (0 ≤ k ≤ A)
 (define means '(10 15)) ; average means for each choice (length of means should be equal to n)
 (define s 0.01) ; standard deviation of means, s ≥ 0
