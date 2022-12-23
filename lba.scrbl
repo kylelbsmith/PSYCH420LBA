@@ -281,12 +281,13 @@ value of k, the RT would be faster.
 Notice also that the density of each of the A lines visually seem quite even. This should also make sense, because
 k is uniformly distributed (i.e. each value between [0, A] has an equal chance of being k each run of the graph).
 
-@subsection{How the Code Works}
+@subsection{Code Overview}
+In-line documentation is provided in each file! Our demo is built on 4 key racket files:
+
 @itemlist[@item{lba.rkt and interlba.rkt are the two demo files for the two ways you can run the demo}
            @item{testlba.rkt contains the wrapper functions which reports the model & runs it x times}
            @item{buildlba.rkt contains the key functions which builds the model}
-           @item{plotlba.rkt contains the main functions used to graph the model and its reports}
-           ]
+           @item{plotlba.rkt contains the main functions used to graph the model and its reports}]
 
 @subsection{Github Repo}
 This code is also available via @hyperlink["https://github.com/kylelbsmith/PSYCH420LBA.git"]{Github}
