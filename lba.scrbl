@@ -44,7 +44,7 @@ Cognitive Biases (Primacy & Recency Effect)
 @image["recency-effect-primacy-effect.png"]
 
 @section{Applications of LBA}
-
+Understanding the effects of Methylphenidate using the linear ballistic accumulator model
 
 
 @bold{Why should we care about it?}
