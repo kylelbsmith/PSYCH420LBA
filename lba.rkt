@@ -22,8 +22,6 @@
 
 ; n ≥ 2
 
-
-
 ;; Now that all variables have been checked, we are ready to run! We use the buildlba functions to build our accumulators:
 (define accs (build-accumulators A s means bs))
 
