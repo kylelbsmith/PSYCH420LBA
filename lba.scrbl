@@ -8,40 +8,31 @@
 
 @section{Introduction: What is LBA?}
 
-The LBA Model of decision-making represents n choices as a race between n accumulators.
+The LBA Model models decision-making between n choices as a race between n accumulators.
 @image["img/LBAoverview.png"]
 
 @section{History of LBA}
 @image["img/LBAhistory.png"]
 
 @section{Building the LBA Model}
-For a given number of choices, the LBA model is implemented by graphing a simple linear line y=mx+b on a 2D plane with the following:
+For a given number of choices, the LBA model is implemented by graphing a simple linear line y=mx+b on a 2D plane for each choice with the following:
 @image["img/Elementdetails.png"]
 
-@bold{Note that,}
+@subsection{Understanding how the LBA model works}
 
-@itemlist[#:style 'ordered @item{It is up to us to decide on the values for @italic{A,b}, and other variables necessary to make this model work}
-          @item{It could be enough to implement the @italic{N} = 2 case illustrated in the reading and allude to the @italic{N} = 3, 4, ...
-           and general @italic{ith} as further reading and/or next steps}]
+Next, let’s explore how we can build our own LBA model. We do this by illustrating how it works through an example:
 
+The LBA model can be used to model choice reaction time across a theoretically infinitely large amount of choices - this reading will walk through the n = 2 case
+(i.e. Decision Making on 2 choices) and will leave the general ith case for further reading and exploration. Please note that
+our demo works with n ≥ 2 cases!
 
-@bold{Understanding how the LBA model works}
-
-Next, let’s explore how we can build our own LBA model. But, in order to implement one, we first need to understand how it works.
-
-the LBA model can be used to model choice reaction time across a theoretically infinitely large amount of choices.
-@itemlist[@item{If you need to model a decision on four choices (pick banana, apple, orange, or grape), no problem}
-          @item{Need 16 choices? (pick a number between 1 and 16), no problem either.}]
-
-In the interest of time, we’ll show you the model on two choices today,
-and leave the general @italic{ith} cases for you to look at in the further reading linked at the end.
-So, let’s say I ask all of you to make a decision: pick “left” or “right”.
-
-@bold{When the "Right" reaches threshold first}
-
-@image[#:scale 0.5]{img/PickRightorLeft.png}
+@bold{Example of LBA Model}
+Suppose you are to make a decision: pick “left” or “right”
 
 We can model an average person’s predicted response time to this binary decision using the LBA model.
+
+@bold{Picking - 2 Choices}
+@image[#:scale 0.5]{img/PickRightorLeft.png}
 On the screen, we see two linear accumulators, representing each of the two choices, both racing upwards towards this common response threshold b.
 
 On the y axis, we have the amount of evidence that supports your choice of each response,
@@ -72,7 +63,7 @@ Whereas in this run of the model, the response is “right”.
 From here, we’re able to predict our response time depending on the time taken to reach that threshold.
 This is as simple as reading the associated x value at the time the accumulator hits b. 
 
-@bold{What about Biaes?}
+@bold{What about Biases?}
 
 Now, you may be wondering, “not every single decision is as simple as telling someone to randomly pick left or right”
 You’re right - and let’s say before you made a decision, I tell everyone to make sure to pick “right”.
@@ -134,12 +125,8 @@ What this means is you’ll be more likely to get drift rates closer to the mean
 
 @image[#:scale 0.5]{img/CompletedModel.png}
 
-Putting this all together, you now have an LBA model to model choice response time!
-
-Modelling 3 choices and above involves setting an additional accumulator for each of your additional choices.
-
-But as we said earlier, we’ll leave this for you to discover on your own! 
-
+Putting this all together, you now have an LBA model to model choice response time! Modelling 3 choices and above involves setting an additional accumulator for each of your additional choices.
+You can see this in our demo code by setting n ≥ 2. 
 
 @section{Pros and Cons of LBA}
 Pros:
