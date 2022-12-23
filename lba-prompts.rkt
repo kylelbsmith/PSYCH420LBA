@@ -1,73 +1,52 @@
 #lang racket
-(require "buildlba.rkt")
-(require "plotlba.rkt")
-(require (planet williams/science/random-distributions/gaussian))
+(require "testlba.rkt")
 
-;; user defined variables
+;; This file is the main file that will run our DEMO with user inputed values! To run this file, hit run and follow the prompts in the console!
 
-(display "In this project, 'n' is defined as the number of response choices (n ≥ 0).  For now, lets set 'n' = 2.
-What should 'n' = ")
-(define n (read)) ; number of choices (n ≥ 0) 
+;; intro
+(displayln "Welcome to Group 5's Linear Ballistic Accumulator Demo! Through this demo, you'll build your own model for n choice and observe how it behaves when run for increasingly many trials.\n\n") 
 
-(display "In this project, 'bs' is defined as the decision threshold(s).  In syntax (threshold-1 threshold-2 threshold-n), lists should contain 1 threshold, or previously determined 'n' thresholds.
-What should 'bs' = ")
-(define bs (read)) ; decision threshold - set one if common across all; else, list individual thresholds in same order as in means
+;; pick n
+(displayln "First, pick integer n, which is defined as the number of response choices (n ≥ 2).
+Please enter n:")
+(define n (string->number (read-line)))
+; verify n
+(if (and (integer? n) (> n 1)) (displayln (format "\nGreat! n is ~a\n\n" n)) (error "Invalid integer n. Please run the file and try again with n ≥ 2."))
 
-(display "In this project, 'means' is defined as a list (mean-1 mean-2 mean-n) of the average means for each response choice.  The length of the means should be equal to previously determined 'n'.
-What should 'means' = ")
-(define means (read)) ; average means for each choice (length of means should be equal to n)
-
-(display "In this project, 'A' is defined as the maximum range of the starting 'k', or intercept (0 ≤ k ≤ A). 'A' should be less than the minimum decision threshold value defined in the list of 'bs'.
-What should 'A' = ")
-(define A (read)) ; max range of starting k (0 ≤ k ≤ A)
-
-(display "In this project, 's' is defined as the standard deviation of 'means' (s ≥ 0).
-What should 's' = ")
-(define s (read)) ; standard deviation of means, s ≥ 0
-
-;; check user input
-
-(cond
-  [(= n 2)n]
-  [(print "Error: For this project, please set 'n' equal to 2.")])
-  
-
-; check length of bs is either 1 or == n. If == 1, create list of length n filled with that 1 value
-
-(cond
-  [(= (length bs) 1)
-      (make-list n bs)]
-  [(= (length bs) n) bs]
-  [(print "Error: Please Enter Decision Threshold(s) Equal to 'n' or '1'")]) 
-     
-; check if length of means == n
-
-(cond
-  [(= (length means) n) means]
-  [(print "Error: Please Enter Mean(s) Equal to 'n'.")])
-
-; check if A < b
-
-(cond
-  [(< A (apply min bs)) A]
-  [(print "Error: Please enter a maximum 'A' range value that is less than than the value of the decision threshold(s)")])
-
-; check if s >= 0
-
-(cond
-  [(>= s 0) s]
-  [(print "Error: Please enter a standard deviation value greater than or equal to 0")])
- 
-; n ≥ 2
+;; populate list of thresholds
+(displayln "In this demo, list bs represents the list of threshold b's: you must include one threshold per choice. If they are the same, please enter the same number n times. Please enter list bs (e.g. \"10 10 10\"): ")
+(define bs (read (open-input-string (format "(~a)" (read-line)))))
+; verify bs
+(if (and (list? bs) (andmap integer? bs) (= (length bs) n)) (displayln (format "\nGreat! bs is ~a\n\n" bs)) (error "Invalid list bs. Please run the file and try again with n integer values (no brackets, no quotes, etc.)."))
 
 
+;; populate list of means
+(displayln "Next, we need a list of size n of the average means (mean-1 mean-2 mean-n) that corresponds with each response choice. Enter the number means in the same way as before:")
+(define means (read (open-input-string (format "(~a)" (read-line)))))
+; verify means
+(if (and (list? means) (andmap number? means) (= (length means) n)) (displayln (format "\nGreat! means is ~a\n\n" means)) (error "Invalid list means. Please run the file and try again with n number values (no brackets, no quotes, etc.)."))
 
-(display "Now that all variables have been checked, we are ready to run! We use the build-lba functions to build our accumulators:")
-(define accs (build-accumulators A s means bs))
 
-;; visualize accumulators
+;; populate A
+(displayln "Next, define A ≥ 0, the maximum starting amount of evidence. Please select A ≥ 0: ")
+(define A (read))
+;; verify A
+(if (and (number? A) (>= A 0)) (displayln (format "\nGreat! A is ~a\n\n" A)) (error "Invalid A. Please enter valid number A ≥ 0"))
 
-; for each set of accumulator data, create plot using (plot-a driftrate threshold start):
-(for ([acc accs])
-  (display (plot-a (second acc) (third acc) (first acc))))
+;; populate s
+(displayln "Lastly, please enter your observed standard deviation s (s ≥ 0): ")
+(define s (read))
+(if (and (number? s) (>= s 0)) (displayln (format "\nGreat! s is ~a\n\n" s)) (error "Invalid s. Please enter valid number s ≥ 0"))
+
+;; Generate report on one run of our model:
+(one-run n bs A means s)
+
+;; Next, let's observe what happens when you run the model on the same set-up multiple times to look at some interesting numbers:
+;;   Will the Reation Time (RT) converge to a common number?
+(test-x 10 n bs A means s)
+(test-x 100 n bs A means s)
+(test-x 1000 n bs A means s)
+(test-x 10000 n bs A means s)
+
+;; Check the console for the output!
 

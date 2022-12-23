@@ -1,0 +1,1 @@
+("8.6" tarm64osx ("bdce90d1ae2e49aea9cf438d0b8de391ad22851d" . "e748db65e1c9965119a38efff897cc75cf24e5bb") (collects #"errortrace" #"errortrace-key.rkt") (collects #"plot" #"main.rkt") (collects #"plot" #"private" #"plot2d" #"line.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (indirect collects #"typed-racket" #"rep" #"type-rep.rkt"))

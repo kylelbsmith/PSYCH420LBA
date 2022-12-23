@@ -1,33 +1,25 @@
 #lang racket
-(require "buildlba.rkt")
-(require "plotlba.rkt")
+(require "testlba.rkt")
 
-;; user defined variables
-
+;; user defined variables - CHANGE ME if you'd like to test different variables
 (define n 2) ; number of choices (n ≥ 0) 
 (define bs '(15 10)) ; decision threshold - set one if common across all; else, list individual thresholds in same order as in means
 (define A 5) ; max range of starting k (0 ≤ k ≤ A)
 (define means '(10 15)) ; average means for each choice (length of means should be equal to n)
-(define s 0.1) ; standard deviation of means, s ≥ 0
+(define s 0.01) ; standard deviation of means, s ≥ 0
 
-;; check user input
+;;;;;; DO NOT CHANGE ;;;;;;;
+; you can generate a new run of the model using one-run with the same parameters
+; you can generate a scatterplot of x Run Times corresponding to x runs of the model using (text-x x n bs A means s) where x is the number of runs you'd like
 
-; check length of b is either 1 or == n. If == 1, create list of length n filled with that 1 value
+;; Generate report on one run of our model:
+(one-run n bs A means s)
 
-; check if length of means == n
+;; Next, let's observe what happens when you run the model on the same set-up multiple times to look at some interesting numbers:
+;;   Will the Reation Time (RT) converge to a common number?
+(test-x 10 n bs A means s)
+(test-x 100 n bs A means s)
+(test-x 1000 n bs A means s)
+(test-x 10000 n bs A means s)
 
-; check if A < b
-
-; check if s >= 0
-
-; n ≥ 2
-
-;; Now that all variables have been checked, we are ready to run! We use the buildlba functions to build our accumulators:
-(define accs (build-accumulators A s means bs))
-
-;; visualize accumulators
-
-; for each set of accumulator data, create plot using (plot-a driftrate threshold start):
-(for ([acc accs])
-  (display (plot-a (second acc) (third acc) (first acc))))
-
+;; Check the console for the output!

@@ -1,0 +1,1 @@
+("8.6" tarm64osx ("b4cbf6ec90a990ce84b1a266c6811535d4c5b1f8" . "baa581ee36f6a22fc011bc4dab21ada53f68c700") #"/Users/anniezhang/Library/Racket/planet/300/8.6/cache/williams/science.plt/4/8/random-distributions/gaussian.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

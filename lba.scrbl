@@ -9,14 +9,14 @@
 @section{Introduction: What is LBA?}
 
 The LBA Model of decision-making represents n choices as a race between n accumulators.
-@image["LBAoverview.png"]
+@image["img/LBAoverview.png"]
 
 @section{History of LBA}
-@image["LBAhistory.png"]
+@image["img/LBAhistory.png"]
 
 @section{Building the LBA Model}
 For a given number of choices, the LBA model is implemented by graphing a simple linear line y=mx+b on a 2D plane with the following:
-@image["Elementdetails.png"]
+@image["img/Elementdetails.png"]
 
 @bold{Note that,}
 
@@ -39,7 +39,7 @@ So, let’s say I ask all of you to make a decision: pick “left” or “right
 
 @bold{When the "Right" reaches threshold first}
 
-@image[#:scale 0.5]{PickRightorLeft.png}
+@image[#:scale 0.5]{img/PickRightorLeft.png}
 
 We can model an average person’s predicted response time to this binary decision using the LBA model.
 On the screen, we see two linear accumulators, representing each of the two choices, both racing upwards towards this common response threshold b.
@@ -60,13 +60,13 @@ So here is one arbitrary decision, and here’s another arbitrary decision:
 
 @bold{When the "Left" reaches threshold first}
 
-@image[#:scale 0.5]{PROL2.png}
+@image[#:scale 0.5]{img/PROL2.png}
 
 A response is given by whichever accumulator first reaches the threshold b - in this particular decision, we see that the choice response is “left” as the accumulator line reaches b first. 
 
 @bold{Run the Model}
 
-@image[#:scale 0.5]{PROL3.png}
+@image[#:scale 0.5]{img/PROL3.png}
 
 Whereas in this run of the model, the response is “right”.
 From here, we’re able to predict our response time depending on the time taken to reach that threshold.
@@ -77,7 +77,7 @@ This is as simple as reading the associated x value at the time the accumulator 
 Now, you may be wondering, “not every single decision is as simple as telling someone to randomly pick left or right”
 You’re right - and let’s say before you made a decision, I tell everyone to make sure to pick “right”.
 
-@image[#:scale 0.5]{PROL4.png}
+@image[#:scale 0.5]{img/PROL4.png}
 
 The model accounts for this as we can set individual thresholds for each choice to account for biased decisions when building the model.
 In the case where I tell you to pick right, we would need to update the right threshold to reflect this bias in our model.
@@ -88,7 +88,7 @@ Does this mean then, that everyone will pick right?
 
 Running this model enough times, we’d likely be able to see a single decision like this representing your rebellion -
 
-@image[#:scale 0.5]{PROL5.png}
+@image[#:scale 0.5]{img/PROL5.png}
 
 It’s just less likely since we would expect the average person to select right in our theoretical world.
 This is accounted for as we generate the accumulators in our model. 
@@ -97,7 +97,7 @@ This is accounted for as we generate the accumulators in our model.
 
 Now, there’s just one last step to building your own model: generating the lines!
 
-@image[#:scale 0.5]{Generating_the_Accumulator.png}
+@image[#:scale 0.5]{img/Generating_the_Accumulator.png}
 
 Luckily for you, all you need for this is to know the equation of a line (y=mx+b) and a statistics library.
 
@@ -109,14 +109,14 @@ We already know where b comes from: somewhere in between the range [0,A] inclusi
 
 @itemlist[@item{We pick a uniformly distributed random variable k in the range [0, A].}]
 
-@image[#:scale 0.5]{Generating_b.png}
+@image[#:scale 0.5]{img/Generating_b.png}
 
 The fact that it is uniformly distributed really just means that there is an equal chance for each number between 0 and A to be chosen,
 so you might use Racket’s random function to generate a number between 0 and A to set your “b” in each equation. 
 
 @bold{Generating "m"}
 
-@image[#:scale 0.5]{Generating_m.png}
+@image[#:scale 0.5]{img/Generating_m.png}
 
 M is the drift rate (speed at which each accumulator increases by) is just a little bit more complicated.
 
@@ -132,7 +132,7 @@ What this means is you’ll be more likely to get drift rates closer to the mean
 
 @bold{A completed model!}
 
-@image[#:scale 0.5]{CompletedModel.png}
+@image[#:scale 0.5]{img/CompletedModel.png}
 
 Putting this all together, you now have an LBA model to model choice response time!
 
@@ -146,7 +146,7 @@ Pros:
 1.Linear nature of LBA as a choice response time model allows for easily interpretable “analytic solutions for predicted distributions and probabilities” (Brown and Heathcote, 2007)
 2.Solutions using the LBA model can be used with any number of response choices (N = 1, 2, … , k)
 Cons:
-@image["recency-effect-primacy-effect.png"]
+@image["img/recency-effect-primacy-effect.png"]
 
 1.Leaky Competitive Accumulator (Usher & McClelland), includes non-linear random variability to oscillate the start points (k) and drift rates (d) 
 
@@ -163,7 +163,7 @@ Random-dot kinematograms (moment-to-moment var.)
 Non-linear biases (if one source of evidence heavily introduced at beginning or end of sequence, responses will reflect these biases).
 
 Cognitive Biases (Primacy & Recency Effect)
-@image["recency-effect-primacy-effect.png"]
+@image["img/recency-effect-primacy-effect.png"]
 
 @section{Applications of LBA}
 Understanding the effects of Methylphenidate using the linear ballistic accumulator model
@@ -197,7 +197,7 @@ What is a task that involves interference? Here is an example.
 
 @bold{The Flanker's Test}
 
-@(image "Flanker's test.png")
+@(image "img/Flankers_test.png")
 
 The Flanker's test require participants to tell the researcher the direction of the middle arrow.
 There are two types of the condition.
@@ -230,27 +230,63 @@ Weigard, A., Heathcote, A. & Sripada, C. Modeling the effects of methylphenidate
 
 @bold{Applications:}
 
-@(image "Methylphenidate.png")
+@(image "img/Methylphenidate.png")
 
 @hyperlink["https://link.springer.com/article/10.1007/s00213-019-05316-x"]{Modeling the effects of methylphenidate on interference and evidence accumulation processes using the conflict linear ballistic accumulator}
 
-@(image "ABM.png")
+@(image "img/ABM.png")
 
 @hyperlink["https://doi.org/10.3389/fpsyg.2019.02447"]{Linear Ballistic Accumulator Modeling of Attentional Bias Modification Revealed Disturbed Evidence Accumulation of Negative Information by Explicit Instruction}
 
 @bold{Programming the LBA model with R and Matlab}
 
-@(image "R.png")
+@(image "img/R.png")
 
 @hyperlink["https://search.r-project.org/CRAN/refmans/rtdists/html/LBA.html"]{The Linear Ballistic Accumulator (LBA) - R}
 
-@(image "Matlab.png")
+@(image "img/Matlab.png")
 
 @hyperlink["https://github.com/smfleming/LBA"]{The Linear Ballistic Accumulator (LBA) - Matlab}
 
 @bold{methods for fitting the LBA model}
 
-@(image "Methods.png")
+@(image "img/Methods.png")
 
 @hyperlink["https://link-springer-com.proxy.lib.uwaterloo.ca/content/pdf/10.3758/BRM.41.4.1095"]{Getting more from accuracy and response time data: Methods for fitting the linear ballistic accumulator}
 
+@section{Our Demo!}
+Now, we invite you to explore the LBA Model using our demo! To access it, users have 2 choices:
+
+@itemlist[@item{"If you want an interactive input, run interlba.rkt and open the console! You will be prompted to set up your model by entering your own observed means, thresholds etc."}
+@item{"If you just want to run the code on a preset model (or easily modify variables between runs), run the lba.rkt file!"}]
+
+Note: the latter has no input verification, so make sure to set the values according to how they have been defined in Section 3!
+
+Running either file, we will first generate a report on our model:
+
+@(image #:scale 0.5 "img/report.png")
+
+Then, we will observe what happens to the RT when the model is run 10, 100, 1000, and 10000 times to try and visually see if the RT converges to a common value:
+
+@(image #:scale 0.5 "img/10.png")
+@(image #:scale 0.5 "img/100.png")
+@(image #:scale 0.5  "img/1000.png")
+@(image #:scale 0.5 "img/10000.png")
+
+@subsection{Interesting Observations}
+As the number of runs increases, it becomes very clear that there is not one "common" RT that the model converges to.
+Rather, there are A number of RT values the model converges to. This makes sense: recall that A is the maximum possible
+k value (0 ≤ k ≤ A) where k is an integer that represents the y-intercept of our accumulator line. Depending on the
+value of k, the RT would be faster.
+Notice also that the density of each of the A lines visually seem quite even. This should also make sense, because
+k is uniformly distributed (i.e. each value between [0, A] has an equal chance of being k each run of the graph).
+
+@subsection{How the Code Works}
+@itemlist[@item{lba.rkt and interlba.rkt are the two demo files for the two ways you can run the demo}
+           @item{testlba.rkt contains the wrapper functions which reports the model & runs it x times}
+           @item{buildlba.rkt contains the key functions which builds the model}
+           @item{plotlba.rkt contains the main functions used to graph the model and its reports}
+           ]
+
+@subsection{Github Repo}
+This code is also available via @hyperlink["https://github.com/kylelbsmith/PSYCH420LBA.git"]{Github}
