@@ -175,7 +175,7 @@ Understanding the effects of Methylphenidate using the linear ballistic accumula
 It helps with hyperactivity and impulsive behaviour, and allows them to concentrate better.
 It is also used to treat adults with ADHD or narcolepsy (a sleep disorder).
 Methylphenidate is only available on prescription.
-It comes as standard (immediate release) tablets and capsules and slow release (also called extended, modified or prolonged release) tablets and capsules.”
+It comes as standard (immediate release) tablets and capsules and slow release (also called extended, modified or prolonged release) tablets and capsules.” (NHS, 2021)
 
 @italic{Click @hyperlink["https://www.nhs.uk/medicines/methylphenidate-children/#:~:text=Methylphenidate%20is%20used%20to%20treat,is%20only%20available%20on%20prescription"]{here} for more details.}
 
