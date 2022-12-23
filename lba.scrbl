@@ -18,6 +18,128 @@ The LBA Model of decision-making represents n choices as a race between n accumu
 For a given number of choices, the LBA model is implemented by graphing a simple linear line y=mx+b on a 2D plane with the following:
 @image["Elementdetails.png"]
 
+@bold{Note that,}
+
+@itemlist[#:style 'ordered @item{It is up to us to decide on the values for @italic{A,b}, and other variables necessary to make this model work}
+          @item{It could be enough to implement the @italic{N} = 2 case illustrated in the reading and allude to the @italic{N} = 3, 4, ...
+           and general @italic{ith} as further reading and/or next steps}]
+
+
+@bold{Understanding how the LBA model works}
+
+Next, let’s explore how we can build our own LBA model. But, in order to implement one, we first need to understand how it works.
+
+the LBA model can be used to model choice reaction time across a theoretically infinitely large amount of choices.
+@itemlist[@item{If you need to model a decision on four choices (pick banana, apple, orange, or grape), no problem}
+          @item{Need 16 choices? (pick a number between 1 and 16), no problem either.}]
+
+In the interest of time, we’ll show you the model on two choices today,
+and leave the general @italic{ith} cases for you to look at in the further reading linked at the end.
+So, let’s say I ask all of you to make a decision: pick “left” or “right”.
+
+@bold{When the "Right" reaches threshold first}
+
+@image[#:scale 0.5]{PickRightorLeft.png}
+
+We can model an average person’s predicted response time to this binary decision using the LBA model.
+On the screen, we see two linear accumulators, representing each of the two choices, both racing upwards towards this common response threshold b.
+
+On the y axis, we have the amount of evidence that supports your choice of each response,
+and on the x axis, we have the amount of time that passes - i.e. the decision time.
+
+Notice that the activation in each accumulator begins at a random point between zero and A.
+This A represents the maximum amount of evidence one could possibly have coming into the decision making.
+
+Are you left handed and generally pick left over right anytime you’re given that decision to make?
+Is there potentially someone waving frantically on the right side of the room that could prompt you to be more inclined to pick right?
+These possibilities of existing evidence in your memory are accounted for as you set A when building the model.
+
+Notice also that the line increases at different rates.
+In fact, for every single decision the set of rates is fixed, but from one decision to the next, the rate fluctuates according to a normal distribution.
+So here is one arbitrary decision, and here’s another arbitrary decision:
+
+@bold{When the "Left" reaches threshold first}
+
+@image[#:scale 0.5]{PROL2.png}
+
+A response is given by whichever accumulator first reaches the threshold b - in this particular decision, we see that the choice response is “left” as the accumulator line reaches b first. 
+
+@bold{Run the Model}
+
+@image[#:scale 0.5]{PROL3.png}
+
+Whereas in this run of the model, the response is “right”.
+From here, we’re able to predict our response time depending on the time taken to reach that threshold.
+This is as simple as reading the associated x value at the time the accumulator hits b. 
+
+@bold{What about Biaes?}
+
+Now, you may be wondering, “not every single decision is as simple as telling someone to randomly pick left or right”
+You’re right - and let’s say before you made a decision, I tell everyone to make sure to pick “right”.
+
+@image[#:scale 0.5]{PROL4.png}
+
+The model accounts for this as we can set individual thresholds for each choice to account for biased decisions when building the model.
+In the case where I tell you to pick right, we would need to update the right threshold to reflect this bias in our model.
+
+Does this mean then, that everyone will pick right?
+
+@itemlist[@item{No - some of you may have a rebellious streak and opt to pick left when told to pick right.}]
+
+Running this model enough times, we’d likely be able to see a single decision like this representing your rebellion -
+
+@image[#:scale 0.5]{PROL5.png}
+
+It’s just less likely since we would expect the average person to select right in our theoretical world.
+This is accounted for as we generate the accumulators in our model. 
+
+@bold{Building the Model}
+
+Now, there’s just one last step to building your own model: generating the lines!
+
+@image[#:scale 0.5]{Generating_the_Accumulator.png}
+
+Luckily for you, all you need for this is to know the equation of a line (y=mx+b) and a statistics library.
+
+As we’ve seen already, each accumulator is linear, so what we need to do is for our model to generate a set of m and b for each choice for each run.
+
+@bold{Generating "b"}
+
+We already know where b comes from: somewhere in between the range [0,A] inclusive.
+
+@itemlist[@item{We pick a uniformly distributed random variable k in the range [0, A].}]
+
+@image[#:scale 0.5]{Generating_b.png}
+
+The fact that it is uniformly distributed really just means that there is an equal chance for each number between 0 and A to be chosen,
+so you might use Racket’s random function to generate a number between 0 and A to set your “b” in each equation. 
+
+@bold{Generating "m"}
+
+@image[#:scale 0.5]{Generating_m.png}
+
+M is the drift rate (speed at which each accumulator increases by) is just a little bit more complicated.
+
+First, for each of your choices, you’ll need to find out the mean slope for each accumulator.
+For instance, in the biased case where I told everyone that the right answer is ‘Right’ and expect most people to pick Right fast,
+while those who chose to rebel maybe would on average, say, take a few extra seconds to deliberate whether to listen or rebel.
+
+So my mean slope for choice 1 “Left” would be lower - let’s say 1, whereas my mean slope for choice 2 “Right” would be higher - let’s say 10.
+
+Using these mean slopes, you then need to use the normal distribution with the respective mean and a common standard deviation s to generate another random variable for your drift rate.
+
+What this means is you’ll be more likely to get drift rates closer to the mean for each of your accumulators - which should make sense! 
+
+@bold{A completed model!}
+
+@image[#:scale 0.5]{CompletedModel.png}
+
+Putting this all together, you now have an LBA model to model choice response time!
+
+Modelling 3 choices and above involves setting an additional accumulator for each of your additional choices.
+
+But as we said earlier, we’ll leave this for you to discover on your own! 
+
 
 @section{Pros and Cons of LBA}
 Pros:
